@@ -42,12 +42,18 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .5s;
+    transform-style: preserve-3d;
 }
 
 .card img{
     width: 100px;
     height: 100px;
     object-fit: cover;
+}
+
+.card:active{
+    transform: rotateY(180deg);
 }
 
 .hidden{
