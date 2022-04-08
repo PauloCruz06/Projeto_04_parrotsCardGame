@@ -23,7 +23,7 @@ cont = 0;
 setCards.sort(comparador);
 
 for(let i=0; i<setCards.length; i++){
-    document.querySelector(".conteiner").innerHTML += `<div class=${setCards[i].class} onclick=${setCards[i].onclick} ><img src=${setCards[i].imgfront} /><img class="hidden" src=${setCards[i].imgback} /></div>`;
+    document.querySelector(".conteiner").innerHTML += `<div onclick=${setCards[i].onclick}><div class=${setCards[i].class} ><img class="front" src=${setCards[i].imgfront} /><img class="back" src=${setCards[i].imgback} /></div></div>`;
     console.log(setCards[i].imgback+" embaralhado");
 }
 
@@ -34,24 +34,20 @@ function comparador(){
 function turn_card(parrot){
     console.log(parrot.querySelector(".hidden"));
     console.log(parrot.firstChild);
-    if(parrot.querySelector(".hidden") === parrot.lastChild){
+    if(parrot.querySelector(".hidden") === null){
         if(cont === 0){
             parrot.firstChild.classList.add("hidden");
-            parrot.lastChild.classList.remove("hidden");
             cards.push(parrot);
             cont = 1;
         }else if(cont === 1){
             parrot.firstChild.classList.add("hidden");
-            parrot.lastChild.classList.remove("hidden");
             cards.push(parrot);
             cont = 0;
             if(cards[cards.length - 2].innerHTML === cards[cards.length - 1].innerHTML){
                 console.log("é par");
             }else{
                 cards[cards.length - 2].firstChild.classList.remove("hidden");
-                cards[cards.length - 2].lastChild.classList.add("hidden");
                 cards[cards.length - 1].firstChild.classList.remove("hidden");
-                cards[cards.length - 1].lastChild.classList.add("hidden");
                 console.log("Não é par!");
             }
         }

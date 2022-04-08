@@ -45,7 +45,7 @@ body{
     position: relative;
 }
 
-.card img{
+.front{
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -54,11 +54,18 @@ body{
     left: 10px;
     backface-visibility: hidden;
 }
-/*
-.card:active{
-    transform: rotateY(180deg);
+
+.back{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    position: absolute;
+    top: 24px;
+    left: 10px;
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
 }
-*/
+
 .hidden{
     transform: rotateY(180deg);
 }
