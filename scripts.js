@@ -2,6 +2,8 @@ let numcards = 0;
 const setCards = [];
 const cards = [];
 let cont = 0;
+let moves = 0;
+let trigger = 0;
 
 numcards =  Number(prompt("Com quantas cartas você quer jogar?\nVálido somente números pares de 4 à 14."));
 
@@ -33,8 +35,8 @@ function comparador(){
 
 function turn_card(parrot){
     console.log(parrot.querySelector(".hidden"));
-    console.log(parrot.firstChild);
     if(parrot.querySelector(".hidden") === null){
+        moves++;
         if(cont === 0){
             parrot.firstChild.classList.add("hidden");
             cards.push(parrot);
@@ -45,12 +47,22 @@ function turn_card(parrot){
             cont = 0;
             if(cards[cards.length - 2].innerHTML === cards[cards.length - 1].innerHTML){
                 console.log("é par");
+                trigger++;
+                if(trigger === setCards.length / 2){
+                    setTimeout(gameOver, 600);
+                }
             }else{
-                cards[cards.length - 2].firstChild.classList.remove("hidden");
-                cards[cards.length - 1].firstChild.classList.remove("hidden");
+                setTimeout(untap, 1000);
                 console.log("Não é par!");
+                function untap(){
+                    cards[cards.length - 2].firstChild.classList.remove("hidden");
+                    cards[cards.length - 1].firstChild.classList.remove("hidden");
+                }
             }
         }
     }
 }
 
+function gameOver(){
+    alert("fim de jogo!\nVocê ganhou em "+moves+" jogadas!");
+}
