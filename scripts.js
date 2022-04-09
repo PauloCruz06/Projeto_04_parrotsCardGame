@@ -38,11 +38,15 @@ function turn_card(parrot){
     if(parrot.querySelector(".hidden") === null){
         moves++;
         if(cont === 0){
-            parrot.firstChild.classList.add("hidden");
+            parrot.firstChild.classList.toggle("hidden");
+            remove_onclick();
+            setTimeout(add_onclick, 1100);
             cards.push(parrot);
             cont = 1;
         }else if(cont === 1){
-            parrot.firstChild.classList.add("hidden");
+            parrot.firstChild.classList.toggle("hidden");
+            remove_onclick();
+            setTimeout(add_onclick, 1100);
             cards.push(parrot);
             cont = 0;
             if(cards[cards.length - 2].innerHTML === cards[cards.length - 1].innerHTML){
@@ -55,12 +59,28 @@ function turn_card(parrot){
                 setTimeout(untap, 1000);
                 console.log("Não é par!");
                 function untap(){
-                    cards[cards.length - 2].firstChild.classList.remove("hidden");
-                    cards[cards.length - 1].firstChild.classList.remove("hidden");
+                    cards[cards.length - 2].firstChild.classList.toggle("hidden");
+                    cards[cards.length - 1].firstChild.classList.toggle("hidden");
                 }
             }
         }
     }
+}
+
+function remove_onclick(){
+    let element = document.querySelectorAll(".conteiner > div");
+    for(let i=0; i<element.length; i++){
+        element[i].removeAttribute("onclick");
+    }
+    console.log(element);
+}
+
+function add_onclick(){
+    let element = document.querySelectorAll(".conteiner > div");
+    for(let i=0; i<element.length; i++){
+        element[i].setAttribute("onclick", "turn_card(this)");
+    }
+    console.log(element);
 }
 
 function gameOver(){
