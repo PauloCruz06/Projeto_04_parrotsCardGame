@@ -91,4 +91,14 @@ function add_onclick(){
 function gameOver(){
     alert("fim de jogo!\nVocê ganhou em "+moves+" jogadas e em "+timer+" segundos!");
     clearInterval(myinterval);
+    let restartGame = prompt("Deseja reiniciar o jogo?(sim/não)");
+    while(restartGame !== "sim" && restartGame !== "não"){
+        alert("Digite apenas 'sim' ou 'não'");
+        restartGame = prompt("Deseja reiniciar o jogo?(sim/não)");
+    }
+    if(restartGame === "sim"){
+        location.reload();
+    }/*else if(restartGame === "não"){
+        window.close();
+    }*/
 }
