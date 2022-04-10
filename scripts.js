@@ -4,6 +4,7 @@ const cards = [];
 let cont = 0;
 let moves = 0;
 let trigger = 0;
+let timer = 0;
 
 numcards =  Number(prompt("Com quantas cartas você quer jogar?\nVálido somente números pares de 4 à 14."));
 
@@ -29,8 +30,14 @@ for(let i=0; i<setCards.length; i++){
     console.log(setCards[i].imgback+" embaralhado");
 }
 
+const myinterval = setInterval(time, 1000);
+
 function comparador(){
     return Math.random() - 0.5;
+}
+
+function time(){
+    document.querySelector(".time-alert").innerHTML = timer++;
 }
 
 function turn_card(parrot){
@@ -39,14 +46,12 @@ function turn_card(parrot){
         moves++;
         if(cont === 0){
             parrot.firstChild.classList.toggle("hidden");
-            remove_onclick();
-            setTimeout(add_onclick, 1100);
             cards.push(parrot);
             cont = 1;
         }else if(cont === 1){
             parrot.firstChild.classList.toggle("hidden");
             remove_onclick();
-            setTimeout(add_onclick, 1100);
+            setTimeout(add_onclick, 1300);
             cards.push(parrot);
             cont = 0;
             if(cards[cards.length - 2].innerHTML === cards[cards.length - 1].innerHTML){
@@ -84,5 +89,6 @@ function add_onclick(){
 }
 
 function gameOver(){
-    alert("fim de jogo!\nVocê ganhou em "+moves+" jogadas!");
+    alert("fim de jogo!\nVocê ganhou em "+moves+" jogadas e em "+timer+" segundos!");
+    clearInterval(myinterval);
 }

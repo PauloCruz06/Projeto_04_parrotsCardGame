@@ -5,6 +5,25 @@ body{
     background-color: #EEF9BF;
 }
 
+.time-alert{
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #99CEA8;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: 'roboto';
+    font-weight: 700;
+    font-size: 18px;
+    background-color: aquamarine;
+    color: #75B79E;
+    position: fixed;
+    right: 5px;
+    top: 3px;
+}
+
 .tittle{
     width: auto;
     height: auto;
