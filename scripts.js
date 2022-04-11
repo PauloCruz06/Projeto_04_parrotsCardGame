@@ -98,7 +98,5 @@ function gameOver(){
     }
     if(restartGame === "sim"){
         location.reload();
-    }/*else if(restartGame === "não"){
-        window.close();
-    }*/
+    }
 }
